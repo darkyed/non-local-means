@@ -4,10 +4,14 @@ Implementation of Non-Local Means algorithm, and its comparison with Gaussian Fi
 - Gaussian Noise
 - Salt and Pepper Noise
 
-## Code Structure
+This implementation heavily relies on numba's `jit` to speed up the computation
+
+## Program Structure
 To execute the code on a particular image, locate the variable `image_test` in `main.py` and change it to your image's name(default: `"Image3.jpg"`). Make sure the image is present in the `Data` directory.
 
-Non-Local Means program: `utilfuncs/nlmeans.py`
+- Non-Local Means program: `utilfuncs/nlmeans.py`
+
+The directory `utilfuncs/` also contains utility functions for preprocessing the images, adding noise to images, computing metrics etc.
 
 ## Results
 After `main.py` finishes executing, three directories will be spawned in the current directory
@@ -16,8 +20,12 @@ After `main.py` finishes executing, three directories will be spawned in the cur
   - **gauss**: Gaussian Noise
   - **saltnpepp**: Salt and Pepper Nouse
 - **results**: Images after denoising
-  - **images of format**: deno_\<algorithm>_\<noise_type>.jpg
+  - **images of format**: `deno_\<algorithm>_\<noise_type>.jpg`
   - **result.txt**: MSE and PSNR values
 
-And a file, `time.txt`:
-- Contains the details about the time taken by each of the alogorithms on different types of noises
+And a file named `time.txt`:
+- Contains the details about the time taken by each of the algorithms on different types of noises
+  - Gaussian Filter on Gaussian Noise
+  - Gaussian Filter on Salt and Pepper Noise
+  - Non-Local Means on Gaussian Noise
+  - Non-Local Means on Salt and Pepper Noise

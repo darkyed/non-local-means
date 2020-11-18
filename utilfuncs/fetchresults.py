@@ -26,9 +26,9 @@ def save_results(image_test:str, base_image:np.ndarray, results:list,\
         f.write("Tested on %s\n\n" % image_test + "-"*60 + "\n")
         f.write("Noisy Images:\n")
         f.write("Gaussian Noise: MSE: %f, PSNR: %f\n" % (get_mse(noisy_image_gauss, base_image),\
-                get_PSNR(noisy_image_gauss, base_image, 255)))
+                get_PSNR(noisy_image_gauss, base_image, base_image.max())))
         f.write("Salt and Pepper Noise: MSE: %f, PSNR: %f\n" % (get_mse(noisy_image_snp, base_image),\
-                get_PSNR(noisy_image_snp, base_image, 255)))
+                get_PSNR(noisy_image_snp, base_image, base_image.max())))
         f.write("-"*70 + "\n\n")
         f.write("Denoised Images:\n")
         for i,e in enumerate(pairs):

@@ -56,7 +56,7 @@ nlm_deno_snp = non_local_means(noisy_image_snp)
 f4 = time.perf_counter()
 print("Done")
 
-results = [(get_mse(deno, base_image), get_PSNR(deno, base_image, 255))\
+results = [(get_mse(deno, base_image), get_PSNR(deno, base_image, base_image.max()))\
             for deno in [gauss_deno_gauss, gauss_deno_snp, nlm_deno_gauss, nlm_deno_snp]]
 
 get_timings([s1,s2,s3,s4], [f1,f2,f3,f4], image_test, os.path.join(curr_path, "time.txt"))
